@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/BNG Framework/Scenes/Quest Demo.unity
     guid: eac0312c32df12949a47d07747a9d1cd
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 95738646979e66347937d1a88ead7f33,
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 66272703bbd8c954abc7b27489fa6db2,
       type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 2ec24d39f7b5ac84aad7e5df7b4fd3ea,
       type: 2}
@@ -32,6 +32,8 @@ EditorBuildSettings:
     com.unity.input.settings: {fileID: 11400000, guid: 7c0d65f8139523c47a3ac0b1587ccdf6,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e657ad3dfbd86684f81e2e55c96b2fb4,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 7bd33cf9776e3974a996e152c74cb7b8,
       type: 2}
     xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 2ae0a4a226e8d9e4aba56d1e2eb3977b,
       type: 2}
