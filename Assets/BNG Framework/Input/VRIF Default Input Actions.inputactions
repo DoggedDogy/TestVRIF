@@ -846,7 +846,7 @@
                 {
                     "name": "left",
                     "id": "4e3d42ed-385f-4839-9281-6e56f0ff4777",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -857,7 +857,7 @@
                 {
                     "name": "right",
                     "id": "5b812a05-917e-41b4-95c8-77e15f476b10",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -894,6 +894,24 @@
                     "type": "PassThrough",
                     "id": "9be57c84-b560-4424-909a-e6809801304b",
                     "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ElementSelection",
+                    "type": "Value",
+                    "id": "3313d270-8cdc-431f-b3fc-c2fef0353ec7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SubmitSelected",
+                    "type": "Button",
+                    "id": "ffca2f99-b31a-488d-aa83-bcf9c2a6f8cb",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -941,6 +959,94 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "PointerRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "9196a94d-957b-449c-8875-4406ac60a17d",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ElementSelection",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "211190f6-36b6-4681-bf49-0e892641a384",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Noncontinuous Move",
+                    "action": "ElementSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a3cf6d92-b289-46b6-b689-ce722ecedc5a",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Noncontinuous Move",
+                    "action": "ElementSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "49ae8a17-4612-49e6-b4f0-b7ba67730916",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Noncontinuous Move",
+                    "action": "ElementSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "919fb0d8-bc21-4ec3-b6d1-4dda8816e201",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Noncontinuous Move",
+                    "action": "ElementSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f437579c-e370-4e10-ad49-14a59f7d55e4",
+                    "path": "<XRController>{RightHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller;Noncontinuous Move",
+                    "action": "SubmitSelected",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa8f3458-ab7f-49ec-81b3-3fd98e74f39b",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Noncontinuous Move",
+                    "action": "SubmitSelected",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a38a85b4-2077-42f3-94c5-8afbf3fd97b5",
+                    "path": "<XRController>{RightHand}/Primary2DAxis",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "Noncontinuous Move",
+                    "action": "ElementSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
