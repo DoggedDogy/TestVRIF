@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -55,27 +56,33 @@ public class UIElementOrganizer : MonoBehaviour
         int nextRow = currentRow;
         int nextCol = currentCol;
 
-        if (direction == Vector2.up)
+        if (Math.Abs(direction.x) >= Math.Abs(direction.y))
         {
-            // Move to the row above and find the closest key by anchoredPosition.x
-            nextRow = (currentRow - 1 + KeyRows.Count) % KeyRows.Count;
-            Selectable closestKey = FindClosestKeyByX(KeyRows[nextRow], currentKey.GetComponent<RectTransform>().anchoredPosition.x);
-            nextCol = KeyRows[nextRow].IndexOf(closestKey);
+            if (direction.x <= 0)
+            {
+                nextCol = (currentCol - 1 + KeyRows[currentRow].Count) % KeyRows[currentRow].Count;
+            }
+            else if (direction.x >= 0)
+            {
+                nextCol = (currentCol + 1) % KeyRows[currentRow].Count;
+            }
         }
-        else if (direction == Vector2.down)
+        else
         {
-            // Move to the row below and find the closest key by anchoredPosition.x
-            nextRow = (currentRow + 1) % KeyRows.Count;
-            Selectable closestKey = FindClosestKeyByX(KeyRows[nextRow], currentKey.GetComponent<RectTransform>().anchoredPosition.x);
-            nextCol = KeyRows[nextRow].IndexOf(closestKey);
-        }
-        else if (direction == Vector2.left)
-        {
-            nextCol = (currentCol - 1 + KeyRows[currentRow].Count) % KeyRows[currentRow].Count;
-        }
-        else if (direction == Vector2.right)
-        {
-            nextCol = (currentCol + 1) % KeyRows[currentRow].Count;
+            if (direction.y >= 0)
+            {
+                // Move to the row above and find the closest key by anchoredPosition.x
+                nextRow = (currentRow - 1 + KeyRows.Count) % KeyRows.Count;
+                Selectable closestKey = FindClosestKeyByX(KeyRows[nextRow], currentKey.GetComponent<RectTransform>().anchoredPosition.x);
+                nextCol = KeyRows[nextRow].IndexOf(closestKey);
+            }
+            else if (direction.y <= 0)
+            {
+                // Move to the row below and find the closest key by anchoredPosition.x
+                nextRow = (currentRow + 1) % KeyRows.Count;
+                Selectable closestKey = FindClosestKeyByX(KeyRows[nextRow], currentKey.GetComponent<RectTransform>().anchoredPosition.x);
+                nextCol = KeyRows[nextRow].IndexOf(closestKey);
+            }
         }
 
         return KeyRows[nextRow][nextCol];
