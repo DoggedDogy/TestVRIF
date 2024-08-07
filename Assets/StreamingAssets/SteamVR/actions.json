@@ -51,20 +51,22 @@
     {
       "name": "/actions/VRIF/in/LeftThumbstickNear",
       "type": "boolean",
-      "requirement": "optional"
+      "requirement": "suggested"
     },
     {
       "name": "/actions/VRIF/in/RightThumbstickNear",
       "type": "boolean",
-      "requirement": "optional"
+      "requirement": "suggested"
     },
     {
       "name": "/actions/VRIF/in/LeftThumbstickDown",
-      "type": "boolean"
+      "type": "boolean",
+      "requirement": "suggested"
     },
     {
       "name": "/actions/VRIF/in/RightThumbstickDown",
-      "type": "boolean"
+      "type": "boolean",
+      "requirement": "suggested"
     },
     {
       "name": "/actions/VRIF/in/Start",

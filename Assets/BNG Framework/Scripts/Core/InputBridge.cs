@@ -649,9 +649,9 @@ namespace BNG {
 
             // For most cases thumbstick is on the primary2DAxis
             // However, if the Controller has both a touchpad and a controller on it (i.e. Valve Index Knuckles) then the thumbstick axis is actually on the secondary axis, not the primary axis
-            thumbstickAxis = SupportsBothTouchPadAndJoystick ? CommonUsages.secondary2DAxis : CommonUsages.primary2DAxis;
-            thumbstickAxisSecondary = SupportsBothTouchPadAndJoystick ? CommonUsages.primary2DAxis : CommonUsages.secondary2DAxis;
-            thumbstickAxisClick = SupportsBothTouchPadAndJoystick ? CommonUsages.secondary2DAxisClick : CommonUsages.primary2DAxisClick;
+            thumbstickAxis = SupportsBothTouchPadAndJoystick ? CommonUsages.primary2DAxis : CommonUsages.secondary2DAxis;
+            thumbstickAxisSecondary = SupportsBothTouchPadAndJoystick ? CommonUsages.secondary2DAxis : CommonUsages.primary2DAxis; 
+            thumbstickAxisClick = SupportsBothTouchPadAndJoystick ? CommonUsages.primary2DAxisClick : CommonUsages.secondary2DAxisClick;
 
             var prevBool = LeftThumbstick;
             LeftThumbstick = getFeatureUsage(primaryLeftController, thumbstickAxisClick);

@@ -263,10 +263,19 @@ MonoBehaviour:
   ControllerInput: 0f000000
   UIInputAction: {fileID: -6728727643101440195, guid: e39f4b35a6db18348b41eb0262520e69,
     type: 3}
-  ToggleInputAction: {fileID: 8330964894262379038, guid: e39f4b35a6db18348b41eb0262520e69,
+  ToggleInputAction: {fileID: 83097790271614945, guid: e39f4b35a6db18348b41eb0262520e69,
     type: 3}
   SelectorInputAction: {fileID: 6644283875830587333, guid: e39f4b35a6db18348b41eb0262520e69,
     type: 3}
+  UIInputActionSVR:
+    actionPath: /actions/VRIF/in/RightTriggerNear
+    needsReinit: 0
+  ToggleInputActionSVR:
+    actionPath: /actions/VRIF/in/RightThumbstickDown
+    needsReinit: 0
+  SelectorInputActionSVR:
+    actionPath: /actions/VRIF/in/RightThumbstickAxis
+    needsReinit: 0
   AddPhysicsRaycaster: 0
   PhysicsRaycasterEventMask:
     serializedVersion: 2
@@ -3355,7 +3364,7 @@ PrefabInstance:
     - target: {fileID: 5883667856760302794, guid: 2af1d2045149fe743b81bc4d1a6f8406,
         type: 3}
       propertyPath: AllowInput
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8352397114572919372, guid: 2af1d2045149fe743b81bc4d1a6f8406,
         type: 3}

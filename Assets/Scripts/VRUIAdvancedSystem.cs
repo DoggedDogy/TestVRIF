@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Valve.VR;
 
 namespace BNG
 {
@@ -40,6 +41,15 @@ namespace BNG
         [Tooltip("The Input Action used to move the selector")]
         public InputActionReference SelectorInputAction;
 
+        [Tooltip("SteamVR Action used to simulate a click or touch event")]
+        public SteamVR_Action_Boolean UIInputActionSVR;
+
+        [Tooltip("SteamVR Action used to toggle a selected UI element")]
+        public SteamVR_Action_Boolean ToggleInputActionSVR;
+
+        [Tooltip("SteamVR Action used to move the selector")]
+        public SteamVR_Action_Vector2 SelectorInputActionSVR;
+
         [Tooltip("If true a PhysicsRaycaster component will be added to the UI camera, allowing physical objects to use IPointer events such as OnPointClick, OnPointEnter, etc.")]
         public bool AddPhysicsRaycaster = false;
 
@@ -73,6 +83,7 @@ namespace BNG
         private float lastToggleInputTime;
         private float lastSelectorInputTime;
 
+        private PlayerRotation pr;
         private static VRUIAdvancedSystem _instance; 
         public static VRUIAdvancedSystem Instance
         {
@@ -112,6 +123,7 @@ namespace BNG
 
         protected virtual void initEventSystem()
         {
+            pr = FindObjectOfType<PlayerRotation>();
             UpdateControllerHand(SelectedHand);
 
             AssignCameraToAllCanvases(cameraCaster);
@@ -119,6 +131,8 @@ namespace BNG
             EventData = new PointerEventData(eventSystem);
             EventData.position = new Vector2(cameraCaster.pixelWidth / 2, cameraCaster.pixelHeight / 2);
 
+#if STEAM_VR_SDK
+#else
             if (UIInputAction != null)
             {
                 UIInputAction.action.Enable();
@@ -133,6 +147,8 @@ namespace BNG
             {
                 SelectorInputAction.action.Enable();
             }
+
+#endif
         }
 
         protected override void Start()
@@ -219,10 +235,13 @@ namespace BNG
                     ExecuteEvents.Execute(ExecuteEvents.GetEventHandler<IScrollHandler>(EventData.pointerCurrentRaycast.gameObject), EventData, ExecuteEvents.scrollHandler);
                 }
             }
-
+#if STEAM_VR_SDK
+            _selectorInput = SelectorInputActionSVR.GetAxis(SteamVR_Input_Sources.Any);
+            _toggleInputDown = ToggleInputActionSVR.GetState(SteamVR_Input_Sources.Any);
+#else
             _selectorInput = SelectorInputAction.action.ReadValue<Vector2>();
             _toggleInputDown = ToggleInputAction.action.ReadValue<float>() > 0.5f;
-
+#endif
 
             // Handle Selection
             HandleSelection();
@@ -257,9 +276,12 @@ namespace BNG
             {
                 return false;
             }
-
             // Check Unity Action
+#if STEAM_VR_SDK
+            if (UIInputActionSVR.GetState(SteamVR_Input_Sources.Any))
+#else
             if (UIInputAction != null && UIInputAction.action.ReadValue<float>() == 1f)
+#endif
             {
                 return true;
             }
@@ -284,6 +306,7 @@ namespace BNG
             // Return if there's no valid raycast target
             if (!EventData.pointerCurrentRaycast.isValid)
             {
+                pr.AllowInput = true;
                 return;
             }
 
@@ -308,6 +331,7 @@ namespace BNG
                     if (SelectedObject == null)
                     {
                         HighlightSelectedObject();
+                        pr.AllowInput = false;
                         SelectedObject = ElementOrganizer.SelectedObject;
                     }
                     else
